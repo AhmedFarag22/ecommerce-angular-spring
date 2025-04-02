@@ -4,6 +4,7 @@ import { ProductService } from '../../services/product.service';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SearchComponent } from '../search/search.component';
 
 @Component({
   selector: 'app-product-list',
@@ -20,6 +21,7 @@ export class ProductListComponent implements OnInit{
 
   // not category id available ... default to category id 1
   currentCategoryId: number = 1;
+  searchMode: boolean = false;
 
   constructor(private productService: ProductService, private cd: ChangeDetectorRef, private route: ActivatedRoute) { }
 
@@ -31,10 +33,35 @@ ngOnInit(): void {
 }
 listProducts() {
 
+  this.searchMode = this.route.snapshot.paramMap.has('keyword');
+
+  if(this.searchMode) {
+    this.handleSearchProducts();
+  }
+  else {
+    this.handleListProducts();
+
+  }
+}
+
+handleSearchProducts(){
+
+  const theKeyword: string = this.route.snapshot.paramMap.get('keyword')!;
+
+  // now search for the products using keyword
+  this.productService.searchProducts(theKeyword).subscribe(
+    data => {
+      this.products = data;
+    }
+  );
+}
+
+  handleListProducts() {
+
   const id = this.route.snapshot.paramMap.get('id');
 
   if (id !== null) {
-    
+
     this.currentCategoryId = +id;
   }
 
