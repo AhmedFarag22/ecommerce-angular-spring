@@ -30,11 +30,11 @@ ngOnInit(): void {
   });
 }
 listProducts() {
-  // check if "id" parameter is available
+
   const id = this.route.snapshot.paramMap.get('id');
 
   if (id !== null) {
-    // get the "id" param string. convert string to a number using the "+" symbol
+    
     this.currentCategoryId = +id;
   }
 
