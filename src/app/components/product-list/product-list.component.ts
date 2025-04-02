@@ -5,11 +5,12 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './product-list-grid.component.html',
   //  templateUrl: './product-list-table.component.html',
   // templateUrl: './product-list.component.html',
