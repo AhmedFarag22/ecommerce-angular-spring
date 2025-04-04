@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 import { SearchComponent } from '../search/search.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartService } from '../../services/cart.service';
+import { CartItem } from '../../common/cart-item';
 
 @Component({
   selector: 'app-product-list',
@@ -34,7 +36,10 @@ export class ProductListComponent implements OnInit{
   previousKeyword: string = "";
 
 
-  constructor(private productService: ProductService, private cd: ChangeDetectorRef, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService,
+              private cd: ChangeDetectorRef,
+              private route: ActivatedRoute,
+              private cartService: CartService) { }
 
 ngOnInit(): void {
 
@@ -120,6 +125,16 @@ handleSearchProducts(){
       this.thePageSize = data.page.size;
       this.theTotalElements = data.page.totalElements;
     }
+  }
+
+  addToCart(theProduct: Product) {
+
+    console.log(`Adding to cart: ${theProduct.name}, ${theProduct.unitPrice}`);
+
+    const theCartItem = new CartItem(theProduct);
+
+    this.cartService.addToCart(theCartItem);
+
   }
 }
 
