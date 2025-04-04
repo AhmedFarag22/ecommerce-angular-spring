@@ -4,10 +4,11 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { RouterModule } from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchComponent } from './components/search/search.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ProductListComponent, RouterModule, ProductCategoryMenuComponent, SearchComponent],
+  imports: [RouterOutlet, ProductListComponent, RouterModule, ProductCategoryMenuComponent, SearchComponent, NgbModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
