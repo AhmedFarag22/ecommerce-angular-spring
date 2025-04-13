@@ -1,0 +1,7 @@
+.navbar .btn {
+  transition: all 0.2s ease-in-out;
+}
+
+.navbar .btn:hover {
+  transform: scale(1.05);
+}
