@@ -11,8 +11,8 @@ import org.springframework.data.rest.core.config.Projection;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 
-@CrossOrigin("http://localhost:4200")
-
+// @CrossOrigin("http://localhost:4200")
+@RepositoryRestResource
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
     Page<Product> findByCategoryId(@Param("id") Long id, Pageable pageable);
