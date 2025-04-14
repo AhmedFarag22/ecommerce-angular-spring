@@ -13,6 +13,9 @@ import { RouterModule } from '@angular/router';
   styleUrl: './login-status.component.css'
 })
 export class LoginStatusComponent implements OnInit {
+
+  storage: Storage | undefined;
+
   private oktaStateService = inject(OktaAuthStateService);
   private oktaAuth = inject(OKTA_AUTH);
 
@@ -23,14 +26,34 @@ export class LoginStatusComponent implements OnInit {
 
   public userFullName = signal<string>('');
 
+  public theEmail = signal<string>('');
+
   ngOnInit(): void {
     this.oktaStateService.authState$.subscribe((authState) => {
       if (authState.isAuthenticated) {
         this.oktaAuth.getUser().then(user => {
           this.userFullName.set(user.name ?? '');
+
+          // retrieve the user's email from authentication response
+          this.theEmail.set(user.preferred_username ?? '');
+
+          console.log(`\n${this.userFullName()}`);
+          console.log('User object:', user);
+          console.log("User email is:", user.email);
+          console.log("this.theEmail() is:", this.theEmail());
+          console.log(`\n${this.theEmail()}`);
+
+          // now store the email in browser storage
+          if (typeof window !== 'undefined' && window.sessionStorage) {
+            this.storage = window.sessionStorage;
+            this.storage.setItem('userEmail', JSON.stringify(this.theEmail()));
+
+          }
+
         });
       } else {
         this.userFullName.set('');
+        this.theEmail.set('');
       }
     });
   }
