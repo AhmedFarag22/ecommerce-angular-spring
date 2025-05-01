@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../common/product';
 import { ProductService } from '../../services/product.service';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SearchComponent } from '../search/search.component';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CartService } from '../../services/cart.service';
@@ -37,7 +35,6 @@ export class ProductListComponent implements OnInit{
 
 
   constructor(private productService: ProductService,
-              private cd: ChangeDetectorRef,
               private route: ActivatedRoute,
               private cartService: CartService) { }
 

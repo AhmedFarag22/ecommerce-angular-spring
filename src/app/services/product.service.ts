@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { response } from 'express';
 import { map, Observable } from 'rxjs';
 import { Product } from '../common/product';
 import { ProductCategory } from '../common/product-category';
@@ -11,6 +10,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ProductService {
+
 
 
 

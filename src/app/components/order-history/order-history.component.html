@@ -1,47 +1,39 @@
 <div class="main-content">
   <div class="section-content section-content-p30">
     <div class="container-fluid">
-      <h3>Your Orders</h3>
 
-      <div *ngIf="orderHistoryList.length > 0">
-        <table class="table table-bordered">
-          <tr>
-            <th width="20%">Order Tracking Number</th>
-            <th width="10%">Total Price</th>
-            <th width="10%">Total Quantity</th>
-            <th width="10%">Date</th>
-          </tr>
+      <h3 class="order-title">🛒 Your Orders</h3>
 
-          <tr *ngFor="let tempOrderHistory of orderHistoryList">
-            <td>
-              {{ tempOrderHistory.orderTrackingNumber }}
-            </td>
-
-            <td>
-              {{ tempOrderHistory.totalPrice | currency: 'USD' }}
-            </td>
-
-            <td>
-              {{ tempOrderHistory.totalQuantity }}
-            </td>
-
-            <td>
-              {{ tempOrderHistory.dateCreated | date: 'medium' }}
-            </td>
-
-          </tr>
-
+      <div *ngIf="orderHistoryList.length > 0" class="table-responsive">
+        <table class="table table-hover table-bordered custom-order-table">
+          <thead class="thead-dark">
+            <tr>
+              <th>Order Tracking Number</th>
+              <th>Total Price</th>
+              <th>Total Quantity</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let tempOrderHistory of orderHistoryList">
+              <td>{{ tempOrderHistory.orderTrackingNumber }}</td>
+              <td>{{ tempOrderHistory.totalPrice | currency: 'USD' }}</td>
+              <td>{{ tempOrderHistory.totalQuantity }}</td>
+              <td>{{ tempOrderHistory.dateCreated | date: 'medium' }}</td>
+            </tr>
+          </tbody>
         </table>
-
       </div>
 
-      <!-- if order history is empty then display a message -->
-      <div *ngIf="orderHistoryList.length == 0" class="alert alert-warning col-md-12" role="alert">
+      <div *ngIf="orderHistoryList.length == 0" class="alert alert-warning mt-4" role="alert">
         No orders found
       </div>
 
+      <!-- زر الرجوع لصفحة المنتجات -->
+      <div class="text-right mt-4">
+        <button class="btn btn-primary back-button" routerLink="/products">← Back to Products</button>
+      </div>
+
     </div>
-
   </div>
-
 </div>

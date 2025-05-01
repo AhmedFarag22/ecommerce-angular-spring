@@ -6,7 +6,7 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 import { HTTP_INTERCEPTORS, provideHttpClient } from '@angular/common/http';
 import { OktaAuthModule, OKTA_AUTH } from '@okta/okta-angular';
 import OktaAuth from '@okta/okta-auth-js';
-import { AuthInterceptorService } from './services/auth-interceptor.service'; // عدّل المسار حسب مكان الملف
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { withInterceptorsFromDi } from '@angular/common/http';
 
 

@@ -13,7 +13,6 @@ import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular'
 
 import { LoginStatusComponent } from './components/login-status/login-status.component';
 import OktaAuth from '@okta/okta-auth-js';
-import { Injector } from '@angular/core';
 import { MembersPageComponent } from './components/members-page/members-page.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 

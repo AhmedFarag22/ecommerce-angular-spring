@@ -1,8 +1,9 @@
 <div class="d-flex align-items-center gap-2 ms-auto" *ngIf="isAuthenticated$ | async; else guest">
   <span class="fw-semibold text-success">Welcome, {{ userFullName() }}</span>
   <button class="btn btn-outline-danger btn-sm rounded-pill px-3" (click)="signOut()">
-    <i class="bi bi-box-arrow-right me-1"></i> Sign Out
+    <i class="bi bi-box-arrow-right me-1 "></i> Sign Out
   </button>
+
 
   <button class="btn btn-outline-primary btn-sm rounded-pill px-3" routerLink="/members">
     <i class="bi bi-person-badge me-1"></i> Members
@@ -29,7 +30,7 @@
     </button>
 
 
-    
+
 
   </div>
 </ng-template>
